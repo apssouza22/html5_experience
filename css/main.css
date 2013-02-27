@@ -1,0 +1,168 @@
+/* 
+    Document   : main
+    Created on : 13/02/2013, 15:21:19
+    Author     : Alexsandro Souza
+    Description:
+        Purpose of the stylesheet follows.
+*/
+html{height: 100%;}
+body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%; 
+	 background: url(img/bg.jpg);
+}
+
+#container { 
+    width: 100%;
+	margin: 0 auto;
+	height: 100%
+}
+
+.top-content{height: 10%; position: relative;}
+.bottom-content{height: 10%;}
+
+.left-content{
+	width: 10%;
+	background: #ff9;
+	float: left;
+	height: 90%;
+}
+
+.left-content nav a{ display: block;}
+
+.right-content{
+	width: 100%;
+	float: left;
+	height: 90%;
+	font-size: 1em;
+}
+
+.right-content .list-photos{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.right-content .list-photos .conteinerItem{
+	cursor: default;
+    float: left;
+    height: 300px;
+    margin-bottom: 5px;
+    margin-right: 1%;
+    overflow: hidden;
+    perspective: 1000px;
+    position: relative;
+    width: 31%;
+    z-index: 1;
+	-webkit-perspective: 1000px;
+	border: 1px solid white;
+}
+
+.right-content .list-photos{height: 100%;-moz-box-sizing: border-box; padding-left: 1%;}
+
+.right-content .list-photos .card{
+	height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: all 1s linear 0s;
+    -webkit-transform-style: preserve-3d;
+	-webkit-transition: all 0.5s linear 0s;
+	-moz-transition: all 0.5s linear 0s;
+	-o-transition: all 0.5s linear 0s;
+}
+
+.right-content .list-photos .card.showBack{
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+}
+
+.list-photos .conteinerItem:hover .card.scale img {
+	-webkit-box-shadow: -5px 5px 5px #aaa;
+}
+
+.card.scale img{ max-width: 100%;}
+
+.face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.face.back {
+	-moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 white;
+    color: black;
+    display: block;
+    text-align: left;
+    transform: rotateY(180deg);
+}
+
+.face.back p{ margin: 10px;}
+
+.top-content input{
+	color: #CCCCCC;
+    float: left;
+    font-size: 1em;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 3px;
+    width: 30%;
+}
+
+.top-content a.name{
+	float: left;
+	margin: 10px 0 10px 12px;
+}
+
+.top-content .picture{
+	height: 30px;
+	float: left;
+	margin: 10px 0 10px 12px;
+}
+
+#faceListFriends{
+	border: 1px solid;
+	left: 10px;
+	list-style: none outside none;
+	margin: 0;
+	padding: 3px;
+	position: absolute;
+	top: 39px;
+	width: 30%;
+	z-index: 10;
+	background: white;
+}
+
+#faceListFriends li{
+	font-size: 0.9em;
+    height: 30px;
+    line-height: 1;
+	margin-bottom: 5px;
+	display: none;
+}
+
+#faceListFriends img{
+	height: 30px;
+	width: 30px;
+	float: left;
+}
+
+
+.loading{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	margin-left: -80px;
+	margin-top: -95px;
+}
+
+
+@media screen and (max-width: 600px) {
+/*  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }*/
+
+  .right-content .list-photos .conteinerItem {
+	  width: 100%;
+	  background: #000;
+  }
+}

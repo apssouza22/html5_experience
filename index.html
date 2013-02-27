@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="pt" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="pt" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="pt" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="pt" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="pt" class="no-js"> <!--<![endif]-->
+	<head>
+		<title>Face in photos</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script src="js/modernizr.js"></script>
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/isotape.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="loading"><img src="css/img/loading.png"></div>
+		<section id="container" class="clearfix">
+			<header class="top-content">
+				<input type="text"  x-webkit-speech placeholder="Pesquisar" class="searchInput" />
+				<img class="picture" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/369530_100001153185823_212203239_q.jpg" /><a class="name" href="">Alexsandro Souza</a>
+				<ul id="faceListFriends" class="hide">
+					
+				</ul>
+			</header>
+<!--			<section class="left-content ">
+				<nav>
+					<a href=""> Menu 1</a>
+					<a href=""> Menu 2</a>
+					<a href=""> Menu 3</a>
+				</nav>
+			</section>-->
+			<section class="right-content">
+				<ul class="list-photos">
+					<p>Aguarde...</p>
+
+				</ul>
+			</section>
+			<footer class="bottom-content">
+
+			</footer>
+		</section>
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<!--<script src="js/jquery.isotope.min.js"></script>-->
+		<script src="js/helper.js"></script>
+		<script src="js/facebook.js"></script>
+		<script src="js/dom.js"></script>
+		<script src="js/common.js"></script>
+
+		<div id="fb-root"></div>
+		<script type="text/javascript">
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId   : '336964586398174', //id da sua pagina
+					session : null, // don't refetch the session when PHP already has it
+					status  : true, // check login status
+					cookie  : true, // enable cookies to allow the server to access the session
+					xfbml   : true // parse XFBML
+				});
+				
+				fbLoad();
+				FB.Canvas.scrollTo(0,0);
+				FB.Canvas.setAutoGrow();//tira o scroll do app no facebook
+			};
+	  	  
+			(function() {
+				var e = document.createElement('script');
+				e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+				e.async = true;
+				document.getElementById('fb-root').appendChild(e);
+			}());
+			
+//		$('.list-photos').isotope({
+//			itemSelector : '.conteinerItem'
+//		});
+		</script>
+	</body>
+</html>
