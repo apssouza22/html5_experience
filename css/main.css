@@ -16,7 +16,10 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
 	height: 100%
 }
 
-.top-content{height: 10%; position: relative;}
+.top-content{height: 10%; position: relative;	
+	background: url(img/logo.jpg) no-repeat scroll 10px 2%  #000;
+}
+
 .bottom-content{height: 10%;}
 
 .left-content{
@@ -50,7 +53,7 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
     overflow: hidden;
     perspective: 1000px;
     position: relative;
-    width: 31%;
+    width: 32%;
     z-index: 1;
 	-webkit-perspective: 1000px;
 	border: 1px solid white;
@@ -95,23 +98,17 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
     display: block;
     text-align: left;
     transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
 }
 
 .face.back p{ margin: 10px;}
 
-.top-content input{
-	color: #CCCCCC;
-    float: left;
-    font-size: 1em;
-    margin-left: 10px;
-    margin-top: 10px;
-    padding: 3px;
-    width: 30%;
-}
+
 
 .top-content a.name{
 	float: left;
 	margin: 10px 0 10px 12px;
+	color: #fff;
 }
 
 .top-content .picture{
@@ -122,22 +119,25 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
 
 #faceListFriends{
 	border: 1px solid;
-	left: 10px;
 	list-style: none outside none;
-	margin: 0;
 	padding: 3px;
-	position: absolute;
 	top: 39px;
-	width: 30%;
+	width: 100%;
 	z-index: 10;
+	position: absolute;
+	left: 0;
 	background: white;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 10px;
 }
 
 #faceListFriends li{
 	font-size: 0.9em;
     height: 30px;
     line-height: 1;
-	margin-bottom: 5px;
+	margin-left: 5px;
+    margin-top: 5px;
 	display: none;
 }
 
@@ -145,6 +145,11 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
 	height: 30px;
 	width: 30px;
 	float: left;
+}
+
+#faceListFriends span{
+	margin-left: 10px;
+	margin-top: 10px;
 }
 
 
@@ -165,4 +170,36 @@ body{font: normal 14px/1.5 "verdana", sans-serif; height: 100%;
 	  width: 100%;
 	  background: #000;
   }
+  
+  .userLoged{display: none;}
+  .top-content{background: #000;}
+  .top-content .list-friends{width: 90%;}
+  
+}
+
+.userLoged {
+	position: absolute;
+    right: 12px;
+    top: 1%;
+	background: url('img/seta_pesquisa.jpg') no-repeat scroll 0 15px;
+	padding-left: 10px;
+}
+
+.searchInput {
+	text-align: center;
+	background: none;
+	border:none;
+	color: #fff;
+    font-size: 1em;
+    margin-top: 1%;
+    padding: 3px;
+    width: 100%;
+}
+
+
+.list-friends {
+	margin: 0 auto;
+    width: 40%;
+	position: relative;
+	height: 100%;
 }

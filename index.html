@@ -16,22 +16,29 @@
 		<div class="loading"><img src="css/img/loading.png"></div>
 		<section id="container" class="clearfix">
 			<header class="top-content">
-				<input type="text"  x-webkit-speech placeholder="Pesquisar" class="searchInput" />
-				<img class="picture" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/369530_100001153185823_212203239_q.jpg" /><a class="name" href="">Alexsandro Souza</a>
-				<ul id="faceListFriends" class="hide">
-					
-				</ul>
+				<div class="list-friends">
+					<input type="text"  x-webkit-speech placeholder="Pesquisar" class="searchInput" />
+					<ul id="faceListFriends" class="hide">
+
+					</ul>
+				</div>
+				<div class="userLoged">
+					<img class="picture" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/369530_100001153185823_212203239_q.jpg" />
+					<a class="name" href="">Alexsandro Souza</a>
+				</div>
+				
+				
 			</header>
-<!--			<section class="left-content ">
-				<nav>
-					<a href=""> Menu 1</a>
-					<a href=""> Menu 2</a>
-					<a href=""> Menu 3</a>
-				</nav>
-			</section>-->
+			<!--			<section class="left-content ">
+							<nav>
+								<a href=""> Menu 1</a>
+								<a href=""> Menu 2</a>
+								<a href=""> Menu 3</a>
+							</nav>
+						</section>-->
 			<section class="right-content">
 				<ul class="list-photos">
-					<p>Aguarde...</p>
+					
 
 				</ul>
 			</section>
@@ -50,25 +57,25 @@
 		<script type="text/javascript">
 			window.fbAsyncInit = function() {
 				FB.init({
-					appId   : '336964586398174', //id da sua pagina
-					session : null, // don't refetch the session when PHP already has it
-					status  : true, // check login status
-					cookie  : true, // enable cookies to allow the server to access the session
-					xfbml   : true // parse XFBML
+					appId: '336964586398174', //id da sua pagina
+					session: null, // don't refetch the session when PHP already has it
+					status: true, // check login status
+					cookie: true, // enable cookies to allow the server to access the session
+					xfbml: true // parse XFBML
 				});
-				
+
 				fbLoad();
-				FB.Canvas.scrollTo(0,0);
+				FB.Canvas.scrollTo(0, 0);
 				FB.Canvas.setAutoGrow();//tira o scroll do app no facebook
 			};
-	  	  
+
 			(function() {
 				var e = document.createElement('script');
 				e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
 				e.async = true;
 				document.getElementById('fb-root').appendChild(e);
 			}());
-			
+
 //		$('.list-photos').isotope({
 //			itemSelector : '.conteinerItem'
 //		});
