@@ -1,5 +1,5 @@
 /* 
- * Arquivo com funçoes de ajuda
+ * Arquivo com funï¿½oes de ajuda
  */
 
 window.onerror = function(e){
@@ -8,7 +8,7 @@ window.onerror = function(e){
 
 function log(value){
 	if(typeof(console) == "object"){	
-		console.log(value)
+		console.log(value);
 	}else{
 		alert(value);
 	}
@@ -16,7 +16,7 @@ function log(value){
 
 
 /***
- * Faz busca numa lista, contemplando um timeout entre o keypress e ainda evitando pesquisa, se a palavra não mudou
+ * Faz busca numa lista, contemplando um timeout entre o keypress e ainda evitando pesquisa, se a palavra nï¿½o mudou
  */
 var Search = function (options) {
 	var methodPublic = {},
@@ -69,7 +69,7 @@ var Search = function (options) {
 	}
 	
 	/**
-	 *Nos browsers mais antigos, não tem o método filter no Array, por isso adicionamos 
+	 *Nos browsers mais antigos, nï¿½o tem o mï¿½todo filter no Array, por isso adicionamos 
 	 **/
 	function addMethodFilter(){
 		if (!Array.prototype.filter) {

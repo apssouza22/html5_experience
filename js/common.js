@@ -35,7 +35,7 @@ function fbLoad(){
 	});
 	
 	Facebook.getWall(function(){
-		Dom.appendWall(Facebook.posts[0].posts.data);
+		Dom.appendWall(Facebook.photos.data);
 	});
 	
 	var acabou = false;
@@ -45,16 +45,22 @@ function fbLoad(){
 		}
 		
 		if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-			acabou = Facebook.posts[0].posts.data.length > 1 ? false : true;
-			var dateStr=Facebook.posts[0].posts.data[Facebook.posts[0].posts.data.length-1].created_time;
+			acabou = Facebook.photos.data.length > 1 ? false : true;
+			var dateStr=Facebook.photos.data[Facebook.photos.data.length-1].created_time;
 			var a=dateStr.split("T");
 			var d=a[0].split("-");
 			var t=a[1].split(":");
 			var date = new Date(d[0],(d[1]-1),d[2],t[0],t[1],0);
-
+			var datetime = (date.getTime()) / 1000;
 			Facebook.getWall(function(){
-				Dom.appendWall(Facebook.posts[0].posts.data);
-			}, Facebook.currentUserId+'?fields=posts.until('+date.getTime()/1000+').fields(from,type,picture,description,caption,name,object_id, comments).limit(100)');
+				if(typeof(Facebook.photos) == 'object'){
+					Dom.appendWall(Facebook.photos.data);
+				}else{
+					var boxWall = '<li>Nenhum nova foto encontrada.</li>';
+					$('.list-photos').append(boxWall);
+					Facebook.photos = {data : []};
+				}
+			}, Facebook.currentUserId+'?fields=photos.until('+ datetime  +').fields(from,picture,name,comments,images).limit(20)');
 		}
 	}); 
 	
@@ -62,9 +68,12 @@ function fbLoad(){
 		Loading.show();
 		$('.list-photos').html('');
 		Facebook.currentUserId = $(this).data('id');
+		
 		Facebook.getWall(function(){
-			Dom.appendWall(Facebook.posts[0].posts.data);
+			Dom.appendWall(Facebook.photos.data);
 		});
 	});
+	
+	
 }
 

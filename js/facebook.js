@@ -4,7 +4,7 @@ var Facebook = {
 	myId : '',
 	currentUserId : 'me',
 	accessToken : '',
-	posts:'',
+	photos:'',
 	
 	compartilheApp : function(e){
 		e.preventDefault();
@@ -12,8 +12,8 @@ var Facebook = {
 			method: 'feed',
 			link: Facebook.urlAppFace,
 			picture: Facebook.urlApp + 'img/share.jpg',
-			name: 'Monte seu chá de bebê',
-			caption: 'De Huggies Turma da Mônica',
+			name: 'Monte seu chï¿½ de bebï¿½',
+			caption: 'De Huggies Turma da Mï¿½nica',
 			description: 'Compartilhe falta texto'
 		}, function(response){
 			log(response);
@@ -37,31 +37,21 @@ var Facebook = {
 	getWall : function(callback, uri){
 		Loading.show();
 		Facebook.getLoginStatus(function(){
-			var faceUri = Facebook.currentUserId+'?fields=posts.limit(100).fields(from,type,picture,description,caption,name,object_id, comments)';
+			var faceUri = Facebook.currentUserId+'?fields=photos.fields(from,picture,name,comments,images).limit(10)';
+			
 			if(typeof(uri) == 'string' ){
 				faceUri = uri;
 			}
 			
-			FB.api("/", "POST", {
-				access_token:Facebook.accessToken,
-				batch:[
-				{
-					"method":"GET",
-					"name":"get-posts",
-					"omit_response_on_success": false,
-					"relative_url": faceUri
-				},			
-				{
-					"method":"GET",
-					"name":"get-likes",
-					"omit_response_on_success": false,
-					"relative_url":"?ids={result=get-posts:$.posts.data.*.object_id}&fields=images"
-				}				
-				]
-			}
+			FB.api(faceUri, "get", {access_token:Facebook.accessToken}
 			, function(response) {
-				response = Facebook.handleResponse(response);
-				Facebook.posts = response;
+				//response = Facebook.handleResponse(response);
+				if(!response.hasOwnProperty('photos')){
+					$('.list-photos').html('<li>Nenhuma foto encontrada</li>');
+					Loading.hide();
+					return;
+				}
+				Facebook.photos = response.photos;
 				if(typeof(callback) == 'function'){
 					callback();
 				}
@@ -104,7 +94,7 @@ var Facebook = {
 					if (response.authResponse) {
 						callbackConnected();
 					}else{
-						alert("Você deve aceitar o aplicativo.");
+						alert("Vocï¿½ deve aceitar o aplicativo.");
 						window.location.reload();
 					}
 				}, {

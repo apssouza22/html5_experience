@@ -21,6 +21,15 @@ Dom = {
 		
 		$('#faceListFriends').html(boxFriends);
 	},
+			
+	setUserPhotos : function (){
+		FB.api(Facebook.currentUserId+'/', 'get',function(response) {
+			var $userLoged = $('.userLoged');
+			$userLoged.find('.picture').attr('src','https://graph.facebook.com/' + response.id + '/picture/?type=small');
+			$userLoged.find('.name').text(response.name);
+				
+		});
+	},
 	
 	appendWall : function(wall){
 		if (wall.length > 0) {
@@ -28,7 +37,7 @@ Dom = {
 			var text = '';
 			$.each(wall, function (i, val) {
 				text = '';
-				if(val.type == 'photo'){
+				
 					if(typeof(val.name) == 'string'){
 						text += val.name;
 					}
@@ -39,29 +48,29 @@ Dom = {
 					if(typeof(val.description) == 'string'){
 						text += text ? ' - ' + val.description : val.description
 					}
-					if(Facebook.posts[1].hasOwnProperty(val.object_id)){
+					
 						var comments = "";
-						if(val.comments.hasOwnProperty('count') && val.comments.count >= 1){
+						if(val.hasOwnProperty('comments')){
 							$.each(val.comments.data ,function(i, val){
 								comments += "<br /> <b>"+val.from.name +"</b> - "+ val.message;
 								});
 						}
-						
 						boxWall += '<li class="conteinerItem">' +
 						'<div class="card scale"><div class="front face">'+
-						'<img src="'+Facebook.posts[1][val.object_id].images[4].source+'">'+
+						'<img src="'+val.images[4].source+'">'+
 						'</div><div class="back face">'+
-						'<p>'+ text +"<br/> Coment·rios : <br/>"+ comments +'</p>'+
+						'<p>'+ text +"<br/> Coment√°rios : <br/>"+ comments +'</p>'+
 						'</div></div>'+
-						'</li>'
-					}
-				}
+						'</li>';
+					
+				
 			});
 		
 		} else {
 			boxWall += '<li>Nenhum amigo encontrado.</li>';
 		}
 		
+		Dom.setUserPhotos();
 		$('.list-photos').append(boxWall);
 		Loading.hide();
 	}
